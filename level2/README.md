@@ -5,3 +5,10 @@
 - When a carrier isn't working, package deliveries will not make any progress on that day. The delivery will thus be postponed by 1 day.
 
 Adapt the expected delivery computation to take these new rules into account.
+
+
+### ⚠️ Note from Jerneja
+* Note: Delivery dates are not calculated correctly.
+* Run python file
+
+        python main.py
