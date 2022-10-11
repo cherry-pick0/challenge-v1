@@ -12,3 +12,9 @@ e.g. Colissimo normally ships in 3 business days, but a package from France to J
 Compute the new expected deliveries taking that extended delay into account. Week ends should still be accounted for. The result should include the oversea delay length in days.
 
 _This is the final level, now would be a good time to tidy up your code and do a last round of refactoring :)_
+
+
+### ⚠️ Note from Jerneja
+Run python file
+
+        python main.py
