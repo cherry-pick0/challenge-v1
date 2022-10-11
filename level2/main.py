@@ -78,16 +78,7 @@ class Main:
             for carrier in self.carriers:
                 if package.carrier == carrier.code:
                     # todo Calculated delivery date is wrong!
-                    expected_delivery_date = shipping_date + timedelta(days=carrier.delivery_promise + 1)
-                    is_saturday = expected_delivery_date.strftime('%w') == 5
-
-                    # You can print this, to see the name of the day
-                    # print(f"Week day: {expected_delivery_date.strftime('%A')}")
-
-                    if is_saturday:
-                        expected_delivery_date = expected_delivery_date + timedelta(days=1)
-
-                    expected_delivery_str = expected_delivery_date.strftime("%Y-%m-%d")
+                    expected_delivery_str = self.calculate_delivery_date(shipping_date, carrier.delivery_promise)
 
             delivery = Delivery(package_id=package.package_id, expected_delivery=expected_delivery_str)
             self.deliveries.append(delivery)
@@ -100,8 +91,22 @@ class Main:
         json_file.write(json_string)
         json_file.close()
 
+    @staticmethod
+    def calculate_delivery_date(shipping_date, delivery_promise: int) -> str:
+        # todo Calculated delivery date is wrong!
+        expected_delivery_date = shipping_date + timedelta(days=delivery_promise + 1)
+        is_saturday = expected_delivery_date.strftime('%w') == 5
+
+        # You can print this, to see the name of the day
+        # print(f"Week day: {expected_delivery_date.strftime('%A')}")
+
+        if is_saturday:
+            expected_delivery_date = expected_delivery_date + timedelta(days=1)
+
+        expected_delivery_str = expected_delivery_date.strftime("%Y-%m-%d")
+        return expected_delivery_str
+
 
 main = Main()
 main.parse_input_file()
 main.create_output_file()
-
