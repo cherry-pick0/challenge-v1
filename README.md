@@ -1,4 +1,4 @@
-# Shipup Backend Challenge
+# Python Backend Challenge
 
 ## Guidelines
 
